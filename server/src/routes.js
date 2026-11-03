@@ -1,0 +1,20 @@
+import { Router } from 'express';
+import auth from './modules/auth/auth.routes.js';
+import documents from './modules/documents/documents.routes.js';
+import access from './modules/access/access.routes.js';
+import history from './modules/history/history.routes.js';
+import admin from './modules/admin/admin.routes.js';
+import emergency from './modules/emergency/emergency.routes.js';
+import users from './modules/users/users.routes.js';
+import { SPECIALITIES } from './config/constants.js';
+
+const router = Router();
+router.use('/auth', auth);
+router.use('/documents', documents);
+router.use('/access', access);
+router.use('/history', history);
+router.use('/admin', admin);
+router.use('/users', users);
+router.use('/emergency', emergency);
+router.get('/meta/specialities', (_req, res) => res.json({ success: true, data: SPECIALITIES }));
+export default router;
